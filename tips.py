@@ -17,8 +17,11 @@ st.write("""
 
 uploaded_file = st.sidebar.file_uploader('Загрузи CSV файл', type='csv')
 
-df = pd.read_csv(uploaded_file)
-st.write(df.head(5))
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+    st.write(df.head(5))
+else:
+    st.stop()
 
 ## Шаг 2. Графики
 st.write('#### 2. Гистограмма total_bill')
